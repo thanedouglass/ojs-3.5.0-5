@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  ukweli_ojs:
+    image: pkponline/ojs:3.5.0-5
+    container_name: ukweli_journal_888
+    platform: linux/amd64
+    ports:
+      - "${HTTP_PORT:-888}:80"
+    environment:
+      - SERVERNAME=${SERVERNAME:-journal.ukweli.org}
+      - DB_HOST=${DB_HOST:-db}
+      - DB_USER=${DB_USER:-ojs_admin}
+      - DB_PASSWORD=${DB_PASSWORD:-SovereignKernel888!}
+      - DB_NAME=${DB_NAME:-okweli_ojs}
+      - PKP_DB_HOST=${DB_HOST:-db}
+      - PKP_DB_USER=${DB_USER:-ojs_admin}
+      - PKP_DB_PASSWORD=${DB_PASSWORD:-SovereignKernel888!}
+      - PKP_DB_NAME=${DB_NAME:-okweli_ojs}
+      - PKP_CLI_INSTALL=${PKP_CLI_INSTALL:-0}
+      - HTTPS=${HTTPS:-off}
+    volumes:
+      - ojs_files:/var/www/files
+      - ojs_public:/var/www/html/public
+      - ./public/branding:/var/www/html/public/branding
+      - ./public/cards:/var/www/html/public/cards
+      - ./public/css/ukweli-design.css:/var/www/html/public/css/ukweli-design.css
+      - ./plugins/themes/ukweli:/var/www/html/plugins/themes/ukweli
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+
+  db:
+    image: mysql:8.0
+    container_name: ojs_db
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-RootSovereign888!}
+      - MYSQL_DATABASE=${DB_NAME:-okweli_ojs}
+      - MYSQL_USER=${DB_USER:-ojs_admin}
+      - MYSQL_PASSWORD=${DB_PASSWORD:-SovereignKernel888!}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/mysql-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p$${MYSQL_ROOT_PASSWORD}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: always
+
+volumes:
+  ojs_files:
+  ojs_public:
+  db_data:

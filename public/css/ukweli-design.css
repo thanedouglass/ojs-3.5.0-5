@@ -1,0 +1,149 @@
+/**
+ * Ukweli Sovereign Open Journal Design System & Modern Card Components
+ * Zero legacy bloat, responsive CSS grid, modern card architecture.
+ */
+
+:root {
+  --ukweli-bg-primary: #0a0e17;
+  --ukweli-bg-card: #121826;
+  --ukweli-bg-card-hover: #1a2235;
+  --ukweli-text-primary: #f3f4f6;
+  --ukweli-text-secondary: #9ca3af;
+  --ukweli-text-muted: #6b7280;
+  --ukweli-accent: #00d2ff;
+  --ukweli-accent-glow: rgba(0, 210, 255, 0.15);
+  --ukweli-border: rgba(255, 255, 255, 0.08);
+  --ukweli-border-hover: rgba(0, 210, 255, 0.4);
+  --ukweli-radius: 12px;
+  --ukweli-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --ukweli-font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Card Grid Layout */
+.ukweli-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+/* Ukweli Design Card */
+.ukweli-card {
+  background: var(--ukweli-bg-card);
+  border: 1px solid var(--ukweli-border);
+  border-radius: var(--ukweli-radius);
+  padding: 1.5rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--ukweli-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.ukweli-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--ukweli-border-hover);
+  box-shadow: 0 12px 30px var(--ukweli-accent-glow);
+  background: var(--ukweli-bg-card-hover);
+}
+
+/* Card Header & Badges */
+.ukweli-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.ukweli-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  background: rgba(0, 210, 255, 0.1);
+  color: var(--ukweli-accent);
+  border: 1px solid rgba(0, 210, 255, 0.2);
+}
+
+.ukweli-badge.peer-reviewed {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+/* Typography in Cards */
+.ukweli-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 0.75rem 0;
+  color: var(--ukweli-text-primary);
+}
+
+.ukweli-card-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ukweli-card-title a:hover {
+  color: var(--ukweli-accent);
+}
+
+.ukweli-card-authors {
+  font-size: 0.875rem;
+  color: var(--ukweli-text-secondary);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.ukweli-card-abstract {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--ukweli-text-muted);
+  margin-bottom: 1.25rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card Footer & CTAs */
+.ukweli-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--ukweli-border);
+  padding-top: 1rem;
+  margin-top: auto;
+}
+
+.ukweli-card-date {
+  font-size: 0.75rem;
+  color: var(--ukweli-text-muted);
+}
+
+.ukweli-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: 8px;
+  background: var(--ukweli-accent);
+  color: #050a14;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.ukweli-btn:hover {
+  background: #38e1ff;
+  box-shadow: 0 0 12px var(--ukweli-accent-glow);
+}
