@@ -33,7 +33,7 @@ app_key =
 installed = Off
 
 ; The canonical URL to the OJS installation (excluding the trailing slash)
-base_url = "https://pkp.sfu.ca/ojs"
+base_url = "http://localhost:888"
 
 ; Enable strict mode. This will more aggressively cause errors/warnings when
 ; deprecated behaviour exists in the codebase.
@@ -97,13 +97,13 @@ restful_urls = Off
 ; An empty string indicates that all hosts should be trusted (not recommended!)
 ; Example:
 ; allowed_hosts = '["myjournal.tld", "anotherjournal.tld", "mylibrary.tld"]'
-allowed_hosts = ''
+allowed_hosts = '["journal.ukweli.org", "localhost", "127.0.0.1", "0.0.0.0"]'
 
 ; Allow the X_FORWARDED_FOR header to override the REMOTE_ADDR as the source IP
 ; Set this to "On" if you are behind a reverse proxy and you control the
 ; X_FORWARDED_FOR header.
 ; Warning: This defaults to "On" if unset for backwards compatibility.
-trust_x_forwarded_for = Off
+trust_x_forwarded_for = On
 
 ; Display a message on the site admin and journal manager user home pages if there is an upgrade available
 show_upgrade_warning = On
@@ -140,10 +140,10 @@ sandbox = Off
 [database]
 
 driver = mysqli
-host = localhost
-username = ojs
-password = ojs
-name = ojs
+host = db
+username = ojs_admin
+password = SovereignKernel888!
+name = okweli_ojs
 
 ; Set the non-standard port and/or socket, if used
 ; port = 3306
@@ -209,7 +209,7 @@ connection_charset = utf8
 ; Complete path to directory to store uploaded files
 ; (This directory should not be directly web-accessible)
 ; Windows users should use forward slashes
-files_dir = files
+files_dir = /var/www/files
 
 ; Path to the directory to store public uploaded files
 ; (This directory should be web-accessible and the specified path

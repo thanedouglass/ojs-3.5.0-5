@@ -1,0 +1,68 @@
+/**
+ * Ukweli Theme Custom CSS - Card components and modern layout
+ */
+
+@import url("../../../../public/css/ukweli-design.css");
+
+/* Container & layout modern resets */
+.pkp_structure_main {
+  background: #0a0e17;
+  color: #f3f4f6;
+  min-height: 100vh;
+}
+
+/* Transform default article summaries into modern design cards */
+.obj_article_summary {
+  background: #121826;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.obj_article_summary:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 210, 255, 0.4);
+  box-shadow: 0 10px 25px rgba(0, 210, 255, 0.15);
+  background: #161f31;
+}
+
+.obj_article_summary .title a {
+  color: #f3f4f6;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.obj_article_summary .title a:hover {
+  color: #00d2ff;
+}
+
+.obj_article_summary .authors {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.obj_article_summary .galleys_links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.obj_article_summary .galleys_links .obj_galley_link {
+  background: #00d2ff;
+  color: #050a14;
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.obj_article_summary .galleys_links .obj_galley_link:hover {
+  background: #38e1ff;
+}
